@@ -31,7 +31,15 @@ bool Preprocess(const path& in_file, const path& out_file, const vector<path>& i
     string line;
     int line_number = 0;
     ifstream in(in_file, ios::in);
+	  if (!in.is_open()) {
+        cout << "Problem open input file: " <<" "<< in_file.filename().string() << endl;
+       return false;
+    }
     ofstream out(out_file, ios::out | ios::app);
+	 if (!out.is_open()) {
+        cout << "Problem open output file: " << " " << out_file.filename().string() << endl;
+       return false;
+    }
  
     while (getline(in, line)) {
         ++line_number;
